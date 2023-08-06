@@ -1,4 +1,3 @@
-import {build} from './details.js';
 import {UserRegistration} from './registration.js';
 export  enum UserStatus {
     Active,
@@ -38,19 +37,19 @@ export  enum UserStatus {
       
   }
   
-  const loginForm = document.getElementById("loginForm");
+  const loginForm  :HTMLElement | null  = document.getElementById("loginForm");
   
   if (loginForm) {
     loginForm.addEventListener("submit",  (e) => {
       e.preventDefault();
-      const usernameInput = document.getElementById("usernameInput") as HTMLInputElement;
-      const passwordInput = document.getElementById("passwordInput") as HTMLInputElement;
+      const usernameInput : HTMLInputElement | null = document.getElementById("usernameInput") as HTMLInputElement;
+      const passwordInput : HTMLInputElement | null = document.getElementById("passwordInput") as HTMLInputElement;
   
       if (usernameInput && passwordInput) {
-        const username = usernameInput.value;
-        const password = passwordInput.value;
-        const loginObj = new Login();
-        const status = loginObj.login(username, password);
+        const username  : string = usernameInput.value;
+        const password : string = passwordInput.value; 
+        const loginObj : Login = new Login();
+        const status : UserStatus = loginObj.login(username, password);
 
         if (status === UserStatus.Blocked) {
           alert("User is blocked. Cannot proceed to the next page.");

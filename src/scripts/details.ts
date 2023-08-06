@@ -1,10 +1,11 @@
- import {UserDetails} from './userDetails.js';
+ import { UserRegistration } from './registration.js';
+import {UserDetails} from './userDetails.js';
  
  export function build(username : string) {
   if (username){
-    const user = UserDetails.getUserDetails(username);
+    const user : UserRegistration | undefined  = UserDetails.getUserDetails(username);
     if (user) {
-      const detailsContainer = document.getElementById("detailsContainer");
+      const detailsContainer  : HTMLElement | null = document.getElementById("detailsContainer");
       if (detailsContainer) {
         detailsContainer.innerHTML = `
             <p>Username: ${user[0]}</p>
@@ -22,7 +23,7 @@
   }
 } 
 
-const url = new URL(window.location.href);
+const url : URL = new URL(window.location.href);
 
 build(url.searchParams.get('username')!);
  

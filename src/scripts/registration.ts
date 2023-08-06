@@ -6,7 +6,7 @@ class MyRegistration {
   private users: UserRegistration[] = [];
 
   constructor() {
-    const usersData = localStorage.getItem("users");
+    const usersData : string | null = localStorage.getItem("users");
     if (usersData) {
       this.users = JSON.parse(usersData);
     }
@@ -24,17 +24,17 @@ const registrationForm = document.getElementById("registrationForm");
 if (registrationForm) {
   registrationForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const usernameInput = document.getElementById("usernameInput") as HTMLInputElement;
-    const nameInput = document.getElementById("nameInput") as HTMLInputElement;
-    const emailInput = document.getElementById("emailInput") as HTMLInputElement;
-    const passwordInput = document.getElementById("passwordInput") as HTMLInputElement;
+    const usernameInput : HTMLInputElement | null = document.getElementById("usernameInput") as HTMLInputElement;
+    const nameInput : HTMLInputElement | null = document.getElementById("nameInput") as HTMLInputElement;
+    const emailInput : HTMLInputElement | null = document.getElementById("emailInput") as HTMLInputElement;
+    const passwordInput : HTMLInputElement | null = document.getElementById("passwordInput") as HTMLInputElement;
 
     if (usernameInput && nameInput && emailInput && passwordInput) {
-      const username = usernameInput.value;
-      const name = nameInput.value;
-      const email = emailInput.value;
-      const password = passwordInput.value;
-      const regObj = new MyRegistration();
+      const username : string | null= usernameInput.value;
+      const name : string | null = nameInput.value;
+      const email : string | null = emailInput.value;
+      const password : string | null = passwordInput.value;
+      const regObj  : MyRegistration = new MyRegistration();
       regObj.register(username, name, email, password, UserStatus.Active);
       console.log("Registration is successful !!!");
       alert("Registration successful!");
